@@ -7,9 +7,11 @@ class ThompsonBernoulli:
         self.succeses = succeses
         self.failures = failures
 
-    def intialize(self):
-        self.succeses = [0 for col in range(len(self.alphas))]
-        self.failures = [0 for col in range(len(self.alphas))]
+    def intialize(self, n_arms):
+        self.alphas = [1] * n_arms
+        self.betas = [1] * n_arms
+        self.succeses = [0 for col in range(n_arms)]
+        self.failures = [0 for col in range(n_arms)]
 
     def select_arm(self):
         thetas = [rd.betavariate(self.succeses[i] + self.alphas[i],

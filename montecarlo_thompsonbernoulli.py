@@ -12,9 +12,8 @@ print("Best arm is " + str(ind_max(means)))
 
 f = open("thompson_bernoulli_results.tsv", "w+")
 
-alphas, betas = [1] * n_arms, [1] * n_arms
-algo = ThompsonBernoulli(alphas, betas, [], [])
-algo.intialize()
+algo = ThompsonBernoulli([], [], [], [])
+algo.intialize(n_arms)
 results = test_algorithm(algo, arms, 5000, 250)
 for i in range(len(results[0])):
     f.write(str(epsilon) + "\t")
