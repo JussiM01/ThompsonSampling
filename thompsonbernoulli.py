@@ -1,17 +1,19 @@
 import random as rd
 
 class ThompsonBernoulli:
-    def __init__(self, succeses, failures):
+    def __init__(self, alphas, betas, succeses, failures):
+        self.alphas = alphas
+        self.betas = betas
         self.succeses = succeses
         self.failures = failures
 
-    def initialize(self, n_arms):
-        self.succeses = [0 for col in range(n_arms)]
-        self.failures = [0 for col in range(n_arms)]
+    def intialize(self):
+        self.succeses = [0 for col in range(len(self.alphas))]
+        self.failures = [0 for col in range(len(self.alphas))]
 
-    def select_arm(self, alphas, betas):
-        thetas = [rd.betavariate(self.succeses[i] + alphas[i],
-            self.failures[i] + betas[i]) for i in range(len(alphas))]
+    def select_arm(self):
+        thetas = [rd.betavariate(self.succeses[i] + self.alphas[i],
+            self.failures[i] + self.betas[i]) for i in range(len(self.alphas))]
         return thetas.index(max(thetas))
 
     def update(self, chosen_arm, reward):
