@@ -7,7 +7,7 @@ class ThompsonBernoulli:
         self.succeses = succeses
         self.failures = failures
 
-    def intialize(self, n_arms):
+    def initialize(self, n_arms):
         self.alphas = [1] * n_arms
         self.betas = [1] * n_arms
         self.succeses = [0 for col in range(n_arms)]
